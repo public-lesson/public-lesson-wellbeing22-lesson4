@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公共「多角的な視点による社会像構想」</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans JP -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles (Inherited from the design system) -->
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc; /* Very light gray background */
+            color: #1f2937; /* Default text color */
+            line-height: 1.7;
+        }
+        .main-color-bg { background-color: #4A90E2; } /* Calm Blue */
+        .main-color-text { color: #4A90E2; }
+        .accent-color-bg { background-color: #F5A623; } /* Yellow Accent */
+        .accent-color-text { color: #F5A623; }
+        .accent-color-hover:hover { background-color: #F88C33; } /* Orange Accent for hover */
+        
+        /* Section Layout */
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section-container:last-child { border-bottom: none; }
+        
+        /* Typography */
+        h1, h2, h3 { font-weight: 700; }
+        h2 {
+            font-size: 1.875rem; /* 3xl */
+            margin-bottom: 1.5rem;
+            color: #374151;
+            display: flex;
+            align-items: center;
+        }
+        h2 .step-number {
+            background-color: #4A90E2;
+            color: white;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        /* Button Style */
+        .button-style {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .button-style:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Information Boxes */
+        .info-box-blue {
+            background-color: #EFF6FF; /* Blue-50 */
+            border-left: 4px solid #4A90E2;
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            margin: 1.5rem 0;
+        }
+        .info-box-title {
+            font-weight: 700;
+            color: #1E40AF; /* Darker blue */
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .section-container { padding: 2rem 1rem; }
+            .button-style { width: 100%; margin-bottom: 0.75rem; }
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 main-color-bg text-white shadow-md">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <span class="text-lg font-semibold tracking-wider">甲南高校78期生</span>
+            <nav class="hidden md:flex space-x-6 font-medium">
+                <a href="#section-intro" class="hover:text-yellow-300 transition-colors">はじめに</a>
+                <a href="#section-development-A" class="hover:text-yellow-300 transition-colors">未来ジョブ</a>
+                <a href="#section-development-B" class="hover:text-yellow-300 transition-colors">社会像構想</a>
+                <a href="#section-summary" class="hover:text-yellow-300 transition-colors">まとめ</a>
+            </nav>
+            <button id="mobileMenuButton" class="md:hidden focus:outline-none p-1 rounded hover:bg-blue-700 transition-colors" aria-label="メニューを開く" aria-expanded="false">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden bg-blue-700 border-t border-blue-500">
+            <a href="#section-intro" class="block px-4 py-3 text-sm hover:bg-blue-800 border-b border-blue-600">はじめに</a>
+            <a href="#section-development-A" class="block px-4 py-3 text-sm hover:bg-blue-800 border-b border-blue-600">未来ジョブ</a>
+            <a href="#section-development-B" class="block px-4 py-3 text-sm hover:bg-blue-800 border-b border-blue-600">社会像構想</a>
+            <a href="#section-summary" class="block px-4 py-3 text-sm hover:bg-blue-800">まとめ</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+<!-- Section 0: Hero Area -->
+<section class="text-white text-center py-20 md:py-28 px-4 relative" style="background-image: url('images/hero-background.png'); background-size: cover; background-position: center;">
+    <!-- 背景画像を暗くして文字を読みやすくするためのオーバーレイ -->
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+        <p class="text-yellow-300 font-bold tracking-widest mb-2 uppercase">第４時限</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">多角的な視点による社会像構想</h1>
+        <p class="text-xl md:text-2xl font-light opacity-90">～未来ジョブ構想～</p>
+        <div class="mt-12 animate-bounce">
+            <a href="#section-intro" class="text-white hover:text-yellow-300 transition-colors" aria-label="授業内容を見る">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mx-auto"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 1: はじめに (Introduction) -->
+<section id="section-intro" class="section-container bg-white">
+    <h2><span class="step-number">1</span>はじめに：目的の確認</h2>
+    <p class="text-lg mb-6">
+        いよいよ「構想力」を本格的に発揮する時間です。まずは、前回の学びを確認しましょう。
+    </p>
+
+    <div class="info-box-blue">
+        <span class="info-box-title">前回の学び：人間ならではの価値</span>
+        <p class="mb-2">
+            私たちは、お金のためだけでなく、より豊かな「よろこび」のために働くことを確認し、AI時代における「人間ならではの価値」を定義しました。
+        </p>
+        <ul class="list-disc list-inside font-semibold text-gray-700">
+            <li>共感する力、創造する力、倫理的に判断する力 etc...</li>
+        </ul>
+    </div>
+
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded my-10">
+        <h3 class="text-2xl font-bold text-gray-800 mb-2 text-center">本時のゴール</h3>
+        <p class="text-xl text-center font-semibold text-blue-800">
+            定義した「価値」を基準に、<br>未来の職業とより良い社会を具体的に構想する！
+        </p>
+    </div>
+    
+    <div class="text-center">
+        <p class="mb-4 text-gray-600">これから、Googleスライドを使って一人一人の構想をまとめていきます。</p>
+        
+        <!-- ボタンを囲むレスポンシブ対応コンテナ -->
+        <div class="sm:flex sm:justify-center sm:items-center sm:space-x-4">
+            <!-- 【左側】Googleスライドを開くボタン (橙色) -->
+            <!-- CAUTION: Replace placeholder with actual Google Slides URL -->
+            <a href="https://docs.google.com/presentation/d/146WF4k529UP5pi07e2uI2bB413CqQJhYo18SKwtqSB8/edit?usp=sharing" target="_blank" class="button-style accent-color-bg text-white accent-color-hover mb-4 sm:mb-0 w-full sm:w-auto shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 9.481L15 17.25m-4.5-4.5l-2.25 2.25M6 18h12M6 6h12" /></svg>
+                Googleスライドを開く
+            </a>
+            
+            <!-- 【右側・追加】AI対話用プロンプトボタン (青色) -->
+            <!-- CAUTION: Replace placeholder with actual AI prompt URL -->
+            <a href="prompts/Coach_Sen.txt" target="_blank" class="button-style main-color-bg text-white hover:bg-blue-600 mb-4 sm:mb-0 w-full sm:w-auto shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
+                AI対話用プロンプト
+            </a>
+        </div>
+    </div>
+
+    <div class="text-center mt-12">
+        <a href="#section-development-A" class="main-color-text font-bold hover:text-yellow-500 transition-colors inline-flex items-center">
+            ▼ 構想を始めよう
+        </a>
+    </div>
+</section>
+
+<!-- Section 2: 展開１ (Development Part A) -->
+<section id="section-development-A" class="section-container">
+    <h2><span class="step-number">2</span>展開１：未来ジョブの構想</h2>
+    <p class="text-lg mb-6">
+        誰かの「潜在能力（Capability）」を拡大するための、全く新しい職業を自由に構想してみましょう。
+    </p>
+
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
+        <h3 class="text-xl font-semibold mb-3 main-color-text text-center">中心的な問い</h3>
+        <p class="text-xl font-bold text-gray-800 p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
+            誰の、どんな「潜在能力」を拡大する？
+        </p>
+    </div>
+
+    <!-- 【ここから挿入】ケイパビリティ・アプローチの解説 -->
+    <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm border my-8">
+        <h3 class="text-xl font-semibold mb-2 main-color-text">ケイパビリティ・アプローチの確認</h3>
+        <p class="mb-4 text-gray-700">
+            経済学者のアマルティア・センは、「人が実際に何ができていて（＝機能）、どんな<strong>選択肢の中から自由に選べるか（＝潜在能力）</strong>が、本当の豊かさを考える上で大事だ！」と考えました。これが「ケイパビリティ・アプローチ」の基本的な考え方です。
+        </p>
+
+        <img src="images/Capability_Approach.png" alt="ケイパビリティ・アプローチの概念図" class="mx-auto my-6 rounded-lg shadow-md w-full max-w-lg">
+
+        <p class="text-center text-sm text-gray-600 mb-8">
+            財（モノやお金）があっても、それを使える環境や能力（潜在能力）がなければ、実際に豊かな活動（機能）にはつながらない。
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2 main-color-text">キーワード整理</h3>
+        <dl>
+            <dt class="font-bold main-color-text mt-4">機能（Functioning）:</dt>
+            <dd class="ml-6 mb-2 text-gray-600">実際にできていること・なっている状態 （例：健康である、学校に通っている）</dd>
+            <dt class="font-bold main-color-text mt-4">潜在能力（Capability）:</dt>
+            <dd class="ml-6 mb-2 text-gray-600">できるようになる可能性・選べる選択肢の幅広さ （例：治療を受けられる、複数の進学先を選べる）</dd>
+        </dl>
+    </div>
+    <!-- 【ここまで挿入】 -->
+
+    <div class="info-box-blue">
+        <span class="info-box-title">💡 考えるためのヒント</span>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>ターゲット（その人たち）は、今、何に困っているだろう？</li>
+            <li>どんな可能性が奪われている（選択肢が狭まっている）だろう？</li>
+            <li>アイデア出しに困ったら、AIをパートナーとして壁打ちに使ってみよう！</li>
+        </ul>
+    </div>
+    
+    <p class="mt-8 text-center font-semibold">構想した新しい職業の名前と、その仕事内容をスライドにまとめてください。</p>
+
+    <div class="text-center mt-12">
+        <a href="#section-development-B" class="main-color-text font-bold hover:text-yellow-500 transition-colors inline-flex items-center">
+            ▼ 次へ：社会像を描く
+        </a>
+    </div>
+</section>
+
+        <!-- Section 3: 展開２ (Development Part B) -->
+        <section id="section-development-B" class="section-container bg-white">
+            <h2><span class="step-number">3</span>展開２：社会像の構想</h2>
+            <p class="text-lg mb-6">
+                あなたの構想した職業が生まれた結果、社会全体がどのように良くなるのか、という大きな視点で構想を深めていきましょう。
+            </p>
+
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded my-10">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2 text-center">ミッション</h3>
+                <p class="text-xl text-center font-semibold text-blue-800">
+                    職業という「点」のアイデアを、<br>より良い社会像という「面」の構想に結びつけよう！
+                </p>
+            </div>
+
+            <p class="text-lg mb-4">
+                以下の視点で、構想した職業が実現した未来の社会を具体的に描写してください。
+            </p>
+            <ul class="list-decimal list-inside bg-gray-50 p-5 rounded-lg text-gray-700 space-y-2">
+                <li>その職業は、社会にどんな影響を与えますか？</li>
+                <li>人々の生活や価値観はどのように変わりますか？</li>
+                <li>その結果、どんな「より良い社会」が実現するでしょうか？</li>
+            </ul>
+
+            <div class="text-center mt-12">
+                <a href="#section-summary" class="main-color-text font-bold hover:text-yellow-500 transition-colors inline-flex items-center">
+                    ▼ まとめと振り返りへ
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 4: まとめ (Conclusion) -->
+        <section id="section-summary" class="section-container">
+            <h2><span class="step-number">4</span>まとめ：ギャラリーウォークと振り返り</h2>
+            <p class="text-lg mb-6">
+                各自の構想を相互に観賞しましょう。最後に、この単元全体の学びを振り返ります。
+            </p>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
+                <h3 class="text-xl font-semibold mb-4 main-color-text border-b pb-2">活動の流れ</h3>
+                <ol class="list-decimal list-inside space-y-4 text-lg text-gray-700">
+                    <li>
+                        <strong>デジタル・ギャラリーウォーク:</strong><br>
+                        <span class="text-base text-gray-600">完成したGoogleスライドを全体で観賞します。クラスメイトの素晴らしい構想を見て回りましょう。<br>（余裕があれば、Googleスライドのコメント機能を使い、クラスメイトのアイデアに賞賛を書き込みましょう）</span>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="bg-green-50 p-8 rounded-xl border border-green-100 mb-10 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">本単元の総括</h3>
+                <p class="text-lg text-gray-700">
+                    皆さんは、社会を「考察」するだけでなく、<strong>自らの価値観に基づいて未来を「構想」する力</strong>を身につけました。<br>この構想力こそが、AI時代を主体的に生き抜く上で不可欠な力です。<br><br>
+                    「ケイパビリティ・アプローチ」という視点は、<strong>社会を考察・構想する強力なツール</strong>です。是非マスターして、AI時代を力強く切り拓いてください。
+                </p>
+            </div>
+            
+<div class="text-center mt-8">
+    <p class="mb-4 font-semibold">最後に、振り返りアンケートに回答してください。</p>
+    
+    <!-- ボタンを囲むレスポンシブ対応コンテナ -->
+    <div class="sm:flex sm:justify-center sm:items-center sm:space-x-4">
+        <!-- アンケートボタン (橙色に変更) -->
+        <!-- CAUTION: Replace placeholder with actual survey URL -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScRXWUyocWwYr69bbkr15Dni3C6DlVjYTjTRLhyt2b6dTbKqA/viewform?usp=header" target="_blank" class="button-style accent-color-bg text-white accent-color-hover mb-4 sm:mb-0 w-full sm:w-auto shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+            振り返りアンケート
+        </a>
+        
+        <!-- 【ここから追加】ルーブリックボタン -->
+        <!-- CAUTION: Replace placeholder with actual rublic URL -->
+        <a href="images/rublic02.jpg" target="_blank" class="button-style main-color-bg text-white hover:bg-blue-600 mb-4 sm:mb-0 w-full sm:w-auto shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+            ルーブリック拡大版はコチラ
+        </a>
+        <!-- 【ここまで追加】 -->
+    </div>
+</div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 bg-gray-800 text-gray-400 text-sm mt-auto">
+        <div class="max-w-5xl mx-auto px-4">
+            <p>© 2025 鹿児島県立甲南高等学校 公民科</p>
+        </div>
+    </footer>
+
+    <!-- Scripts (Same as before) -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuButton && mobileMenu) {
+            const hamburgerIcon = '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>';
+            const closeIcon = '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+
+            mobileMenuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isHidden = mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', !isHidden);
+                mobileMenuButton.innerHTML = isHidden ? closeIcon : hamburgerIcon;
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenuButton.innerHTML = hamburgerIcon;
+                }
+            });
+        }
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href.startsWith('#LINK_TO_')) return;
+
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        mobileMenuButton.innerHTML = '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>';
+                    }
+                    
+                    const headerOffset = document.querySelector('header').offsetHeight || 70;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
